@@ -52,6 +52,25 @@ public class ProductEntity {
 		return this;
 	}
 
+	/**
+	 * this section of code is for telling if a product is in a cart
+	 * boolean inCart is set to false to denote item is not in cart
+	 * bool true means at least one item is in cart
+	 * this section of code still needs testing and so far has not been called by any transaction code
+	 * By: Edwards, Sebastian
+	 */
+	@Column(name = "inCart")
+	private boolean inCart = false;
+
+	public boolean getInCart(){
+		return this.inCart;
+	}
+
+	public ProductEntity setInCart(final boolean cart){
+		this.inCart = cart;
+		return this;
+	}
+
 	@Column(name = "createdon", insertable = false, updatable = false)
 	@Generated(GenerationTime.INSERT)
 	private LocalDateTime createdOn;
