@@ -40,6 +40,16 @@ public class Product extends ApiResponse {
 		return this;
 	}
 
+	private boolean inCart;
+	public boolean getInCart(){
+		return this.inCart;
+	}
+
+	public Product setInCart(boolean inCart){
+		this.inCart = inCart;
+		return this;
+	}
+
 	private String createdOn;
 
 	public String getCreatedOn() {
@@ -64,7 +74,7 @@ public class Product extends ApiResponse {
 		this.count = -1;
 		this.id = new UUID(0, 0);
 		this.lookupCode = StringUtils.EMPTY;
-
+		this.inCart = false;
 		this.setCreatedOn(LocalDateTime.now());
 	}
 
@@ -74,7 +84,7 @@ public class Product extends ApiResponse {
 		this.id = productEntity.getId();
 		this.count = productEntity.getCount();
 		this.lookupCode = productEntity.getLookupCode();
-
+		this.inCart = productEntity.getInCart();
 		this.setCreatedOn(productEntity.getCreatedOn());
 	}
 }
