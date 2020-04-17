@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"> <!--xmlns:th=https://www.thymeleaf.org">-->
+
+<head>
+	<title> Search </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+
+	<script>
+	function runSearch() {
+		var form = document.getElementbyId("form1");
+		var lookupCode = form.elements.lookupCode.value;
+		//Do something
+		return false;
+	}
+	</script>
+	
+</head>
+
+<body>
+	<!-- very basic at the moment, will make it look better and play with css later -->
+	
+	<h2> Search for a product by entering its lookup code <h2>
+	<br />
+
+	<form name="searchForm" onsubmit="return runSearch()" id="form1"> <!-- TODO: function -->
+		<input name="lookupCode">
+		<input type="submit" value="Search">
+	</form>
+</body>
+</html>
