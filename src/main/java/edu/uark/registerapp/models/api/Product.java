@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
+import javax.validation.constraints.Min;
+
 import org.apache.commons.lang3.StringUtils;
 
 import edu.uark.registerapp.models.entities.ProductEntity;
@@ -58,10 +60,25 @@ public class Product extends ApiResponse {
 		return this;
 	}
 
+	@Min(value = 0, message = "Quantity must not be less than 0")
+	public int quantity;
+
+	public int getQuantity() {
+		return this.quantity;
+	}
+	public Product setQuantity(int quantity) {
+		this.quantity = count;
+		if (this.quantity < 0)
+			this.quantity = 0;
+
+		return this;
+	}
+
 	public Product() {
 		super();
 
 		this.count = -1;
+		quantity = -1;
 		this.id = new UUID(0, 0);
 		this.lookupCode = StringUtils.EMPTY;
 
@@ -72,8 +89,10 @@ public class Product extends ApiResponse {
 		super(false);
 
 		this.id = productEntity.getId();
-		this.count = productEntity.getCount();
+		quantity = productEntity.getCount();
+		//this.count = productEntity.getCount();
 		this.lookupCode = productEntity.getLookupCode();
+		//this.quantity = productEntity.getQuantity();
 
 		this.setCreatedOn(productEntity.getCreatedOn());
 	}
