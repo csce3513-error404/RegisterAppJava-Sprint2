@@ -1,0 +1,103 @@
+<!doctype html>
+
+<html> <!--xmlns:th="https://www.thymeleaf.org">-->
+
+
+<head>
+	<title> Transaction Summary </title>
+
+	<script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+
+	<script type="text/javascript" src="/scripts/master.js" defer></script>
+	<!--<script type="text/javascript" src="/scripts/TransactionSummary.js" defer></script>-->
+</head>
+
+
+<body>
+	<!--<form method = "POST" action = "${pageContext.request.contextPath } /"-->
+	<div class="header">
+		<h1 class="primary-message"><center>Summary</center></h1>
+	</div>
+	<br>
+	<br>
+	<div id="main" class="main">
+		<h2><center>Products:</center></h2>
+		<!--get products-->
+		<div>
+			<center>	
+			<button class="plus_btn" type="button" name="button">
+				<img src="/images/plus.png" alt="add">
+			</button>
+			<input type="text" name="name" value="0">
+			<button class="minus_btn" type="button" name="button">
+				<img src="/images/minus.png" alt="minus">
+			</button>
+			</center>
+		</div>
+		<br>
+		<div>
+			<center>
+			<button class="plus_btn" type="button" name="button">
+				<img src="/images/plus.png" alt="add">
+			</button>
+			<input type="text" name="name" value="0">
+			<button class="minus_btn" type="button" name="button">
+				<img src="/images/minus.png" alt="minus">
+			</button>
+			</center>
+		</div>	
+		<br>
+		<br>
+		<!--total price-->
+	
+		<!--total quantity-->
+		<div>
+			<center>
+			<h2>Total Quantity <input type = "submit" value = "Update"></h2>
+			<p id="quantity">0</p>
+		</div>
+	</div>
+	<!--</form>-->
+	
+	
+	<script type="text/javascript"> 
+		$('.minus_btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+	//var quant = parseInt($input.val());
+ 
+    if (value > 1) {
+        value = value - 1;
+		document.getElementById("quantity").innerHTML = value;
+    } else {
+        value = 0;
+    }
+ 
+  $input.val(value);
+});
+
+	$('.plus_btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+ 
+    if (value < 100) {
+        value = value + 1;
+		document.getElementById("quantity").innerHTML = value;
+    } else {
+        value =100;
+    }
+ 
+    $input.val(value);
+});
+
+	</script>
+</body>
+
+</html>
