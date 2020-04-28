@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html> <!--xmlns:th="https://www.thymeleaf.org">-->
+
+
+<head>
+	<title>Product Listings</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+
+	<script type="text/javascript" src="/scripts/master.js" defer></script>
+</head>
+
+
+<body style="background-color:lightblue;">
+	
+	<h3>Products</h3>
+	<table cellpadding="2" cellspacing="2" border="1">
+		<tr>
+			<th>ID</th>
+			<th>Lookup Code</th>
+			<th>Price</th>
+			<th>Add to cart</th>
+		</tr>
+		<c:forEach var="product" items="${products }">
+			<tr>
+				<td>${product.id}</td>
+				<td>${product.lookupCode}</td>
+				<td>${product.price}</td>
+				
+				<!-- needs correct path -->
+				<td align="center"><a href="${pageContext.request.contextPath }/ShoppingCart/${product.id}">Add to cart</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+
+	
+</body>
+
+</html>
