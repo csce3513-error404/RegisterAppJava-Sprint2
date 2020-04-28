@@ -47,6 +47,7 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
             {
                 product.setInCart(false);
                 product.setCount(0);
+                transaction.remove(a);
             }
         }
     }
@@ -61,5 +62,6 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
             tmp.setInCart(false);
             tmp.setCount(0);
         }
+        transaction.clear();
     }
 }
