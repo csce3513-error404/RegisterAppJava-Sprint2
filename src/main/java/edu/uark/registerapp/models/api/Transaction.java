@@ -21,8 +21,8 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
 
     public Transaction(final TransactionEntity transactionEntity, final EmployeeEntity employeeEntity){
         super(false);
-        this.transaction = transactionEntity.getTransaction();
-        this.transactionID = transactionEntity.getId();
+        //this.transaction = transactionEntity.getTransaction();
+        this.transactionID = transactionEntity.get_T_Id();
         this.employeeID = employeeEntity.getEmployeeId();
     }
 
