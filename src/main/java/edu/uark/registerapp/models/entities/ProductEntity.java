@@ -55,12 +55,12 @@ public class ProductEntity {
 	@Column(name = "inCart")
 	private boolean inCart;
 
+	public getInCart(){return this.inCart;}
+
 	public ProductEntity setInCart(final boolean inCart){
 		this.inCart = inCart;
 		return this;
 	}
-
-	public boolean getInCart(){return this.inCart;}
 
 	@Column(name = "createdon", insertable = false, updatable = false)
 	@Generated(GenerationTime.INSERT)
