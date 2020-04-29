@@ -69,6 +69,18 @@ public class ProductEntity {
 	public LocalDateTime getCreatedOn() {
 		return this.createdOn;
 	}
+	
+	@Column(name="price")
+	private int price;
+	
+	public int getPrice() {
+		return this.price;
+	}
+	
+	public ProductEntity setPrice(final int price) {
+		this.price = price;
+		return this;
+	}
 
 	public Product synchronize(final Product apiProduct) {
 		this.setCount(apiProduct.getCount());
@@ -84,17 +96,20 @@ public class ProductEntity {
 		this.count = -1;
 		this.id = new UUID(0, 0);
 		this.lookupCode = StringUtils.EMPTY;
+		this.price = 0;
 	}
 
 	public ProductEntity(final String lookupCode, final int count) {
 		this.count = count;
 		this.id = new UUID(0, 0);
 		this.lookupCode = lookupCode;
+		this.price = price;
 	}
 
 	public ProductEntity(final Product apiProduct) {
-    	this.id = new UUID(0, 0);
+    		this.id = new UUID(0, 0);
 		this.count = apiProduct.getCount();
 		this.lookupCode = apiProduct.getLookupCode();
+		this.price = 0;
 	}
 }
