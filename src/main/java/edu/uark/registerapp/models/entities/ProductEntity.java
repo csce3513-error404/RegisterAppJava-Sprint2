@@ -52,16 +52,6 @@ public class ProductEntity {
 		return this;
 	}
 
-	@Column(name = "inCart")
-	private boolean inCart;
-
-	public getInCart(){return this.inCart;}
-
-	public ProductEntity setInCart(final boolean inCart){
-		this.inCart = inCart;
-		return this;
-	}
-
 	@Column(name = "createdon", insertable = false, updatable = false)
 	@Generated(GenerationTime.INSERT)
 	private LocalDateTime createdOn;
