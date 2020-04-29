@@ -1,42 +1,75 @@
-<!doctype html>
-
-<html> <!--xmlns:th="https://www.thymeleaf.org">-->
-
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-	<title>Product Listings</title>
-
+	<title>Register - Products</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
 	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+	<link rel="stylesheet" type="text/css" href="/styles/productListing.css">
 
 	<script type="text/javascript" src="/scripts/master.js" defer></script>
+	<script type="text/javascript" src="/scripts/productListing.js" defer></script>
 </head>
 
+<body>
+	<div class="header">
+		<h1 class="primary-message">Products Listing</h1>
+	</div>
 
-<body style="background-color:lightblue;">
-	
-	<h3>Products</h3>
-	<table cellpadding="2" cellspacing="2" border="1">
-		<tr>
-			<th>ID</th>
-			<th>Lookup Code</th>
-			<th>Price</th>
-			<th>Add to cart</th>
-		</tr>
-		<c:forEach var="product" items="${products }">
-			<tr>
-				<td>${product.id}</td>
-				<td>${product.lookupCode}</td>
-				<td>${product.price}</td>
+	<div id="main" class="main">
+		<div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
+			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
+		</div>
+
+		<div class="productsWrapper">
+			<div th:class="not ${isElevatedUser} ? hidden : ''">
+				<a href="/productDetail/" class="button">Create New</a>
+			</div>
+
+			<br /><br />
+
+			<h3>Products</h3>
+			<table cellpadding="2" cellspacing="2" border="1">
+				<tr>
+					<th>ID</th>
+					<th>Lookup Code</th>
+					<th>Price</th>
+					<th>Add to cart</th>
+				</tr>
+				<c:forEach var="product" items="${products }">
+				<tr>
+					<td>${product.id}</td>
+					<td>${product.lookupCode}</td>
+					<td>${product.price}</td>
 				
-				<!-- needs correct path -->
-				<td align="center"><a href="${pageContext.request.contextPath }/ShoppingCart/${product.id}">Add to cart</a></td>
-			</tr>
-		</c:forEach>
-	</table>
+					<!-- needs correct path -->
+					<td align="center"><a href="${pageContext.request.contextPath }/Cart/${product.id}">Add to cart</a></td>
+				</tr>
+				</c:forEach>
+			</table>
+		</div>
 
-	
+		<div class="hidden">
+			<input type="checkbox" id="isRefreshed" class="hidden">
+			<script type="text/javascript">
+				window.onunload = function() {
+					const isRefreshedElement = document.getElementById("isRefreshed");
+
+					if(!isRefreshedElement.checked) {
+						isRefreshedElement.checked = true;
+					} else {
+						isRefreshedElement.checked = false;
+						location.reload();
+					}
+				}
+			</script>
+		</div>
+	</div>
+
+	<div class="footer">
+		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
+	</div>
+		
 </body>
 
 </html>
