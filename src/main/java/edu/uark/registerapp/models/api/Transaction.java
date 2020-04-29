@@ -10,20 +10,23 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
     private ArrayList<Product> transaction; //this array list is a list made up of products
     private static UUID transactionID;
     private static int employeeID;
+    private String productIDs;
 
     public Transaction() {
         super();
 
-        this.transaction = new ArrayList<Product>();
+        //this.transaction = new ArrayList<Product>();
         this.transactionID = new UUID(0,0);
         this.employeeID = -1;
+        this.productIDs = "";
     }
 
     public Transaction(final TransactionEntity transactionEntity, final EmployeeEntity employeeEntity){
         super(false);
-        //this.transaction = transactionEntity.getTransaction();
+        // this.transaction = transactionEntity.getTransaction();
         this.transactionID = transactionEntity.get_T_Id();
         this.employeeID = employeeEntity.getEmployeeId();
+        this.productIDs= transactionEntity.getProduct_IDs();
     }
 
     /**
@@ -61,5 +64,24 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
             tmp.setInCart(false);
             tmp.setCount(0);
         }
+    }
+
+    //-------------------------------- Getters and Setters ---------------------------//
+    public UUID get_T_ID(){return this.transactionID;}
+    public Transaction set_T_ID(final UUID T_ID) {
+        this.transactionID = T_ID;
+        return this;
+    }
+
+    public int get_employeeID(){return this.employeeID;}
+    public Transaction set_employeeID(final int employeeID) {
+        this.employeeID = employeeID;
+        return this;
+    }
+
+    public String get_productIDs(){return this.productIDs;}
+    public Transaction set_productIDs(final String productIDs) {
+        this.productIDs = productIDs;
+        return this;
     }
 }
