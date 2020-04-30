@@ -19,7 +19,7 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
     public Transaction() {
         super();
 
-        //this.transaction = new ArrayList<Product>();
+        this.transaction = new ArrayList<Product>();
         this.transactionID = new UUID(0,0);
         this.employeeID = -1;
         this.productIDs = "";
@@ -29,12 +29,14 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
 
     public Transaction(final TransactionEntity transactionEntity, final EmployeeEntity employeeEntity){
         super(false);
-        // this.transaction = transactionEntity.getTransaction();
+
         this.transactionID = transactionEntity.get_T_Id();
         this.employeeID = employeeEntity.getEmployeeId();
         this.productIDs= transactionEntity.getProduct_IDs();
         this.totalCount = 0;
         this.totalCost = 0;
+        this.transaction = new ArrayList<Product>();
+        this.createList(productIDs);
     }
 
     /**
@@ -45,7 +47,10 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
         //needs a list of products from the ids
         ArrayList productIDsList = new ArrayList<String>(Arrays.asList(productIDs.split("'")));
         ProductByLookupCodeQuery code = new ProductByLookupCodeQuery();
-        Product product = code.execute((String) productIDsList.get(0));
+        for(int i = 0; i < productIDsList.size() - 1; i++){
+            transaction.set(i, code.execute((String) productIDsList.get(0)));
+        }
+        //Product product = code.execute((String) productIDsList.get(0));
     }
 
     /**
