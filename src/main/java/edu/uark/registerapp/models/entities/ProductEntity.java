@@ -66,7 +66,7 @@ public class ProductEntity {
 	public int getPrice() {
 		return this.price;
 	}
-	
+
 	public ProductEntity setPrice(final int price) {
 		this.price = price;
 		return this;
@@ -93,7 +93,7 @@ public class ProductEntity {
 		this.count = count;
 		this.id = new UUID(0, 0);
 		this.lookupCode = lookupCode;
-		this.price = price;
+		this.price = 0;//change this to be dynamically updated
 	}
 
 	public ProductEntity(final Product apiProduct) {
