@@ -53,6 +53,15 @@ public class ProductUpdateCommand implements ResultCommandInterface<Product> {
 		this.productId = productId;
 		return this;
 	}
+	
+	private int productPrice;
+	public int getProductPrice() {
+		return this.productPrice;
+	}
+	public ProductUpdateCommand setProductPrice(final int productPrice) {
+		this.productPrice = productPrice;
+		return this;
+	}
 
 	private Product apiProduct;
 	public Product getApiProduct() {
