@@ -18,15 +18,6 @@ public class ProductObjectTests {
     }
 
     @Test
-    public void inCartTest(){
-        product.setInCart(true);
-        assertEquals(true, product.getInCart());
-
-        product.setInCart(false);
-        assertEquals(false, product.getInCart());
-    }
-
-    @Test
     public void idTest(){
         UUID id = UUID.randomUUID();
         product.setId(id);
