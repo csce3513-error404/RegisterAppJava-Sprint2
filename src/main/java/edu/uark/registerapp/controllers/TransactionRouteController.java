@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
+import edu.uark.registerapp.models.api.Transaction;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "/transaction")
@@ -33,12 +34,15 @@ public class TransactionRouteController extends BaseRouteController{
         modelAndView.addObject(
                 ViewModelNames.IS_ELEVATED_USER.getValue(),
                 this.isElevatedUser(activeUserEntity.get()));
+        request.setAttribute("TransactionId","");
+        if((queryParameters.get("TransactionId" != null)))
+        {
+            request.setAttribute("TransactionId",queryParameters.get("TransactionId"));
+            modelAndView.addObject(ViewNames.TRANSACTION.getViewName(), this.transactionQuery,.set_T_ID(UUID.fromString(queryParameters.get("TransactionId"))).execute);
+        }
+    
 
-        //modelAndView.addObject(
-        //        this.Transaction
-        //);
-
-        return modelAndView;
+        return modelAndView.addAllObjects(queryParameters);
     }
 
     @Autowired
