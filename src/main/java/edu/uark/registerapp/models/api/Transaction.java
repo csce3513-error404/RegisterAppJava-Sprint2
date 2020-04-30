@@ -1,9 +1,11 @@
 package edu.uark.registerapp.models.api;
 
+import edu.uark.registerapp.commands.products.ProductByLookupCodeQuery;
 import edu.uark.registerapp.models.entities.EmployeeEntity;
 import edu.uark.registerapp.models.entities.TransactionEntity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
 
 public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
@@ -41,12 +43,9 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
     public void createList(String productIDs){
         //creates as a list of strings
         //needs a list of products from the ids
-//        ArrayList productIDsList = new ArrayList<String>(Arrays.asList(productIDs.split("'")));
-//        ProductByLookupCodeQuery code = new ProductByLookupCodeQuery();
-//        Product product = code.execute();
-//
-//        productIDsList[0]
-
+        ArrayList productIDsList = new ArrayList<String>(Arrays.asList(productIDs.split("'")));
+        ProductByLookupCodeQuery code = new ProductByLookupCodeQuery();
+        Product product = code.execute((String) productIDsList.get(0));
     }
 
     /**

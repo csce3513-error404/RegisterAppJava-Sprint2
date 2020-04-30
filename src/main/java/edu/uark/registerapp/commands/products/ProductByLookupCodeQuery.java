@@ -28,6 +28,19 @@ public class ProductByLookupCodeQuery implements ResultCommandInterface<Product>
 		}
 	}
 
+	//@Override
+	public Product execute(String lookupCode) {
+		this.validateProperties();
+
+		final Optional<ProductEntity> productEntity =
+				this.productRepository.findByLookupCode(lookupCode);
+		if (productEntity.isPresent()) {
+			return new Product(productEntity.get());
+		} else {
+			throw new NotFoundException("Product");
+		}
+	}
+
 	// Helper methods
 	private void validateProperties() {
 		if (StringUtils.isBlank(this.lookupCode)) {
