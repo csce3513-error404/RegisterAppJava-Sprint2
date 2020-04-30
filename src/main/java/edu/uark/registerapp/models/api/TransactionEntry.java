@@ -1,4 +1,4 @@
-/*package edu.uark.registerapp.models.api;
+package edu.uark.registerapp.models.api;
 
 import edu.uark.registerapp.models.entities.TransactionEntity;
 import edu.uark.registerapp.models.entities.TransactionEntryEntity;
@@ -87,4 +87,4 @@ public class TransactionEntry extends ApiResponse {
 	public TransactionEntry setDateCreated(final LocalDateTime dateCreated) {
 		this.dateCreated = dateCreated.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 		return this;
-	}*/
+	}
