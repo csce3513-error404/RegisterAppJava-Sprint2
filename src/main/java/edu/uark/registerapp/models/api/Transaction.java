@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
-public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
+public class Transaction extends ApiResponse {
     private ArrayList<Product> transaction; //this array list is a list made up of products
     private static UUID transactionID;
     private static int employeeID;
