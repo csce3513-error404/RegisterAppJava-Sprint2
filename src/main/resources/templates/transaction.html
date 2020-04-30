@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<title Register - Transaction></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+	<link rel="stylesheet" type="text/css" href="/styles/productDetail.css">
+
+	<script type="text/javascript" src="/scripts/master.js" defer></script>
+	<script type="text/javascript" src="/scripts/productTransaction.js" defer></script>
+</head>
+	
+</body>
+	<div class="header">
+		<h1 class="primary-message">Transaction</h1>
+	</div>
+
+	<div id="main" class="main">
+		<div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
+			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
+		</div>
+
+		<div class="productTransaction">
+			<br /><br />
+
+			<ul id="transactionProduct" class="transactionProducts">
+				<li th:each="transactions : ${transactionProducts}">
+					<input type="hidden" name="productId" th:value="${transactionProducts.id}" />
+					<span class="productLookupCodeDisplay" th:text="${transactionProducts.lookupCode}">lookupCode</span>
+					<br />&nbsp;&nbsp;<span class="productCountDisplay" th:text="${transactionProducts.count}">1</span>
+					<br />&nbsp;&nbsp;<span class="productPriceDisplay" th:text="${transactionProducts.price}">0</span>
+				</li>
+			</ul>
+		</div>
+		<br>
+		<br>
+
+		<div class="changePage">
+			<button id="checkout" type="button" class="action">Checkout</button>
+			<button id="mainMenu" type="button" class="action">Back to Main Menu</button> 
+		</div>
+
+	</div>
+
+	<div class="footer">
+		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
+	</div>
+
+</body>
+</html>
