@@ -8,7 +8,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import edu.uark.registerapp.models.entities.ProductEntity;
 
-public class Product extends ApiResponse {
+public class
+Product extends ApiResponse {
 	private UUID id;
 	public UUID getId() {
 		return this.id;

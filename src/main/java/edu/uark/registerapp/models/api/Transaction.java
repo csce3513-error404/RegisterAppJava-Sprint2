@@ -39,6 +39,16 @@ public class Transaction extends ApiResponse {
         this.createList(productIDs);
     }
 
+    public Transaction(TransactionEntity transactionEntity) {
+        this.transactionID = transactionEntity.get_T_Id();
+        this.employeeID = transactionEntity.getEmployee_ID();
+        this.productIDs= transactionEntity.getProduct_IDs();
+        this.totalCount = 0;
+        this.totalCost = 0;
+        this.transaction = new ArrayList<Product>();
+        this.createList(productIDs);
+    }
+
     /**
      * creates the array list that is the transaction
      */

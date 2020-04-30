@@ -35,9 +35,9 @@ public class TransactionRouteController extends BaseRouteController{
                 ViewModelNames.IS_ELEVATED_USER.getValue(),
                 this.isElevatedUser(activeUserEntity.get()));
 
-        modelAndView.addObject(
-                this.Transaction
-        );
+        //modelAndView.addObject(
+        //        this.Transaction
+        //);
 
         return modelAndView;
     }
