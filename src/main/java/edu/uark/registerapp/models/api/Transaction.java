@@ -49,8 +49,9 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
         ProductByLookupCodeQuery code = new ProductByLookupCodeQuery();
         for(int i = 0; i < productIDsList.size() - 1; i++){
             transaction.set(i, code.execute((String) productIDsList.get(0)));
+            totalCount += 1;
+            totalCost += transaction.get(i).getPrice();
         }
-        //Product product = code.execute((String) productIDsList.get(0));
     }
 
     /**
