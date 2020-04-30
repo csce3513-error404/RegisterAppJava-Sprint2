@@ -51,9 +51,7 @@ public class ProductEntity {
 		this.count = count;
 		return this;
 	}
-
-	public boolean getInCart(){return this.inCart;}
-
+	
 	@Column(name = "createdon", insertable = false, updatable = false)
 	@Generated(GenerationTime.INSERT)
 	private LocalDateTime createdOn;
