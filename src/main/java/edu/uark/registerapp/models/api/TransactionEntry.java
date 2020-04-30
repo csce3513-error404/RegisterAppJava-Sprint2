@@ -27,7 +27,7 @@ public class TransactionEntry extends ApiResponse {
 		this.id = transactionEntryEntity.getId();
 		this.transactionId = transactionEntryEntity.getTransactionId();
 		this.productId = transactionEntryEntity.getProductId();
-		this.quanitity = transactionEntryEntity.getQuantity();
+		this.quantity = transactionEntryEntity.getQuantity();
 		this.price = transactionEntryEntity.getPrice();
 	}
 
@@ -59,7 +59,7 @@ public class TransactionEntry extends ApiResponse {
 	}
 
 	public int getQuantity() {
-		return this.quanitity;
+		return this.quantity;
 	}
 
 	public TransactionEntry setQuantity(final int quantity) {

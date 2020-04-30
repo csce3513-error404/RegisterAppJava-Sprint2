@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import edu.uark.registerapp.models.api.Transaction;
+import edu.uark.registerapp.models.api.TransactionEntry;
+
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -34,13 +38,17 @@ public class TransactionRouteController extends BaseRouteController{
         modelAndView.addObject(
                 ViewModelNames.IS_ELEVATED_USER.getValue(),
                 this.isElevatedUser(activeUserEntity.get()));
-        request.setAttribute("TransactionId","");
-        if((queryParameters.get("TransactionId" != null)))
-        {
-            request.setAttribute("TransactionId",queryParameters.get("TransactionId"));
-            modelAndView.addObject(ViewNames.TRANSACTION.getViewName(), this.transactionQuery.set_T_ID(UUID.fromString(queryParameters.get("TransactionId"))).execute);
-        }
-    
+
+        // TODO: Query the transaction? i don't know what y'all intend to do.
+
+        modelAndView.addObject(
+            "TransactionId",
+            (queryParameters.containsKey("TransactionId")
+                ? queryParameters.get("TransactionId")
+                : ""));
+        modelAndView.addObject(
+            "transactionProducts",
+            new TransactionEntry[0]); // TODO: Your view is expecting this entry, you probably want to put real data in here.
 
         return modelAndView.addAllObjects(queryParameters);
     }

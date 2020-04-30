@@ -3,8 +3,8 @@ package edu.uark.registerapp.models.entities;
 import edu.uark.registerapp.models.api.TransactionEntry;
 
 import javax.persistence.*;
-import javax.util.UUID;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name="transactionEntry")

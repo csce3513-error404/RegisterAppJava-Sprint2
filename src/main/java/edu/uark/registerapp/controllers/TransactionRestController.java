@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,10 +26,12 @@ public class TransactionRestController extends BaseRestController
                      final HttpServletRequest request,
                      final HttpServletResponse response
 	) {
-        final ApiResponse elevatedUserResponse =
+        final ApiResponse elevatedUserResponse = // TODO: Do you want to do something with this?
         this.redirectUserNotElevated(
             request,
             response,
             ViewNames.TRANSACTION.getRoute());
+        // TODO: Create the transaction
+        return new ApiResponse();
 	}
 }
