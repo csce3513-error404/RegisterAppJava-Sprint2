@@ -4,8 +4,6 @@ import edu.uark.registerapp.models.entities.EmployeeEntity;
 import edu.uark.registerapp.models.entities.TransactionEntity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.UUID;
 
 public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
@@ -37,7 +35,7 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
     public void createList(String productIDs){
         //creates as a list of strings
         //needs a list of products from the ids
-        this.transaction = new ArrayList<String>(Arrays.asList(productIDs.split("'")));
+        //this.transaction = new ArrayList<String>(Arrays.asList(productIDs.split("'")));
     }
 
     /**
@@ -45,7 +43,6 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
      */
     public void add(Product product){
         transaction.add(product);
-        product.setInCart(true);
         product.setCount(product.getCount()+1);
     }
 
@@ -59,7 +56,6 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
         {
             if(transaction.get(a) == product)
             {
-                product.setInCart(false);
                 product.setCount(0);
             }
         }
@@ -72,7 +68,6 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
         for(int a = 0;a<transaction.size();a++)
         {
             Product tmp = transaction.get(a);
-            tmp.setInCart(false);
             tmp.setCount(0);
         }
     }
