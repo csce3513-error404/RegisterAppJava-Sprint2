@@ -93,13 +93,13 @@ public class ProductEntity {
 		this.count = count;
 		this.id = new UUID(0, 0);
 		this.lookupCode = lookupCode;
-		this.price = 0;//change this to be dynamically updated
+		this.price = 10;//change this to be dynamically updated
 	}
 
 	public ProductEntity(final Product apiProduct) {
     	this.id = new UUID(0, 0);
 		this.count = apiProduct.getCount();
 		this.lookupCode = apiProduct.getLookupCode();
-		this.price = 0;
+		this.price = 10;
 	}
 }

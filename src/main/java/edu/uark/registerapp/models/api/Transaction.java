@@ -11,6 +11,8 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
     private static UUID transactionID;
     private static int employeeID;
     private String productIDs; // this is a list of all transactions. it is ',' deliminator
+    private static int totalCount;
+    private static int totalCost;
 
     public Transaction() {
         super();
@@ -19,6 +21,8 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
         this.transactionID = new UUID(0,0);
         this.employeeID = -1;
         this.productIDs = "";
+        this.totalCount = 0;
+        this.totalCost = 0;
     }
 
     public Transaction(final TransactionEntity transactionEntity, final EmployeeEntity employeeEntity){
@@ -27,6 +31,8 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
         this.transactionID = transactionEntity.get_T_Id();
         this.employeeID = employeeEntity.getEmployeeId();
         this.productIDs= transactionEntity.getProduct_IDs();
+        this.totalCount = 0;
+        this.totalCost = 0;
     }
 
     /**
@@ -35,7 +41,12 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
     public void createList(String productIDs){
         //creates as a list of strings
         //needs a list of products from the ids
-        //this.transaction = new ArrayList<String>(Arrays.asList(productIDs.split("'")));
+//        ArrayList productIDsList = new ArrayList<String>(Arrays.asList(productIDs.split("'")));
+//        ProductByLookupCodeQuery code = new ProductByLookupCodeQuery();
+//        Product product = code.execute();
+//
+//        productIDsList[0]
+
     }
 
     /**
@@ -44,6 +55,8 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
     public void add(Product product){
         transaction.add(product);
         product.setCount(product.getCount()+1);
+        totalCost += product.getPrice();
+        totalCount += 1;
     }
 
     //Start of tasks 3-4 and 3-7, Dalton Gillespie
@@ -88,6 +101,18 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
     public String get_productIDs(){return this.productIDs;}
     public Transaction set_productIDs(final String productIDs) {
         this.productIDs = productIDs;
+        return this;
+    }
+
+    public int getTotalCount(){ return this.totalCount; }
+    public Transaction set_total_count(int totalCount){
+        this.totalCount = totalCount;
+        return this;
+    }
+
+    public int getTotalCost(){ return this.totalCost; }
+    public Transaction set_total_cost(int totalCost){
+        this.totalCost = totalCost;
         return this;
     }
 }
