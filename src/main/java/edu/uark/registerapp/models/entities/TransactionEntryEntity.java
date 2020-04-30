@@ -19,7 +19,7 @@ public class TransactionEntryEntity {
 	}
 	
 	
-	@Column(name="transaction_Id)
+	@Column(name="transaction_Id")
 	private UUID transactionId;
 	
 	public UUID getTransactionId() {
@@ -31,7 +31,7 @@ public class TransactionEntryEntity {
 	}
 	
 	
-	@Column(name="product_Id)
+	@Column(name="product_Id")
 	private UUID productId;
 	
 	public UUID getProductId() {
