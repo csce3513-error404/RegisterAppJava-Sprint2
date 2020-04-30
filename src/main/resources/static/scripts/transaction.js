@@ -5,9 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		productElements[i].addEventListener("click", remove);
 	}
 	
-	
-	getPayment().addEventListener("click", payClick); 
-	
 });
 
 function findClickedListItemElement(clickedTarget) {
@@ -27,12 +24,4 @@ function findClickedListItemElement(clickedTarget) {
 
 		return (ancestorIsListItem ? ancestorElement : null);
 	}
-}
-
-function payClick(event) {
-	window.location.assign("/pay");
-}
-
-function getPayment() {
-	return document.getElementById("checkout");
 }
