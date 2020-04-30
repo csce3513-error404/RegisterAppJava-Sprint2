@@ -4,13 +4,15 @@ import edu.uark.registerapp.models.entities.EmployeeEntity;
 import edu.uark.registerapp.models.entities.TransactionEntity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
     private ArrayList<Product> transaction; //this array list is a list made up of products
     private static UUID transactionID;
     private static int employeeID;
-    private String productIDs;
+    private String productIDs; // this is a list of all transactions. it is ',' deliminator
 
     public Transaction() {
         super();
@@ -27,6 +29,15 @@ public class Transaction extends edu.uark.registerapp.models.api.ApiResponse {
         this.transactionID = transactionEntity.get_T_Id();
         this.employeeID = employeeEntity.getEmployeeId();
         this.productIDs= transactionEntity.getProduct_IDs();
+    }
+
+    /**
+     * creates the array list that is the transaction
+     */
+    public void createList(String productIDs){
+        //creates as a list of strings
+        //needs a list of products from the ids
+        this.transaction = new ArrayList<String>(Arrays.asList(productIDs.split("'")));
     }
 
     /**

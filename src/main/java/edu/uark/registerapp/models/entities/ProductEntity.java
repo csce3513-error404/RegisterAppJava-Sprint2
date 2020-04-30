@@ -52,14 +52,6 @@ public class ProductEntity {
 		return this;
 	}
 
-	@Column(name = "inCart")
-	private boolean inCart;
-
-	public ProductEntity setInCart(final boolean inCart){
-		this.inCart = inCart;
-		return this;
-	}
-
 	public boolean getInCart(){return this.inCart;}
 
 	@Column(name = "createdon", insertable = false, updatable = false)
