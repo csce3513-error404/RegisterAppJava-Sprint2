@@ -10,7 +10,6 @@ public class TransactionEntry extends ApiResponse {
 	private UUID productId;
 	private int quantity;
 	private int price;
-	private String dateCreated;
 
 	public TransactionEntry() {
 		super();
@@ -20,7 +19,6 @@ public class TransactionEntry extends ApiResponse {
 		this.productId = new UUID(0, 0);
 		this.quantity = 0;
 		this.price = 0;
-		this.dateCreated(LocalDateTime.now());
 	}
 
 	public TransactionEntry(final TransactionEntryEntity transactionEntryEntity) {
@@ -31,7 +29,6 @@ public class TransactionEntry extends ApiResponse {
 		this.productId = transactionEntryEntity.getProductId();
 		this.quanitity = transactionEntryEntity.getQuantity();
 		this.price = transactionEntryEntity.getPrice();
-		this.dateCreated(transactionEntryEntity.getDateCreated());
 	}
 
 	public UUID getId() {
@@ -76,20 +73,6 @@ public class TransactionEntry extends ApiResponse {
 
 	public TransactionEntry setPrice(final int price) {
 		this.price = price;
-		return this;
-	}
-
-	public String getDateCreated() {
-		return this.dateCreated;
-	}
-
-	public TransactionEntry setDateCreated(final String dateCreated) {
-		this.dateCreated = dateCreated;
-		return this;
-	}
-
-	public TransactionEntry setDateCreated(final LocalDateTime dateCreated) {
-		this.dateCreated = dateCreated.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 		return this;
 	}
 }
