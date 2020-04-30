@@ -38,7 +38,7 @@ public class TransactionRouteController extends BaseRouteController{
         if((queryParameters.get("TransactionId" != null)))
         {
             request.setAttribute("TransactionId",queryParameters.get("TransactionId"));
-            modelAndView.addObject(ViewNames.TRANSACTION.getViewName(), this.transactionQuery,.set_T_ID(UUID.fromString(queryParameters.get("TransactionId"))).execute);
+            modelAndView.addObject(ViewNames.TRANSACTION.getViewName(), this.transactionQuery.set_T_ID(UUID.fromString(queryParameters.get("TransactionId"))).execute);
         }
     
 
