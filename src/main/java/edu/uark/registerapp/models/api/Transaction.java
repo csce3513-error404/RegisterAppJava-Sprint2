@@ -12,7 +12,7 @@ public class Transaction extends ApiResponse {
     private ArrayList<Product> transaction; //this array list is a list made up of products
     private static UUID transactionID;
     private static int employeeID;
-    private String productIDs; // this is a list of all transactions. it is ',' deliminator
+    private String productIDs; // this is a list of all product IDs in the transactions. it is ',' deliminator
     private static int totalCount;
     private static int totalCost;
 
